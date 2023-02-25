@@ -38,7 +38,7 @@ object DescribedReg {
     enumerations: Map[BigInt, (String, String)] = Map()): (SimpleRegIO, RegFieldDesc) = {
     val rdesc = RegFieldDesc(name, desc, None, None,
       access, wrType, rdAction, volatile, Some(reset), enumerations)
-    val reg = Module(new AsyncResetRegVec(w = width, init = reset))
+    val reg = Module(new AsyncResetRegVec(w = width, reset))
     reg.suggestName(name + "_reg")
     (reg.io, rdesc)
   }
